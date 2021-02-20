@@ -16,21 +16,26 @@
 
 using namespace std;
 
-class Rabin {
+class Rabin
+{
 	int cipher;
 	long *decipher;
+
 public:
-	Rabin() {
+	Rabin()
+	{
 		cipher = 0;
 		decipher = new long[4];
 	}
 
-	int Encrypt(int plain, int pq) {
+	int Encrypt(int plain, int pq)
+	{
 		cipher = Power(plain, 2) % pq;
 		return cipher;
 	}
 
-	long* Decrypt(int plain, int p, int q) {
+	long *Decrypt(int plain, int p, int q)
+	{
 		int a[2], b[2];
 
 		a[0] = Power(plain, (p + 1) / 4) % p;
@@ -44,7 +49,6 @@ public:
 		cout << " " << b[0];
 		cout << " " << b[1];
 
-
 		decipher[0] = ChineseRemainder(a[0], b[0], p, q);
 		decipher[1] = ChineseRemainder(a[0], b[1], p, q);
 		decipher[2] = ChineseRemainder(a[1], b[0], p, q);
@@ -54,14 +58,16 @@ public:
 	}
 
 private:
-	int Power(int a, int b) {
+	int Power(int a, int b)
+	{
 		int res = a;
 		for (int i = 1; i < b; i++)
 			res *= a;
 		return res;
 	}
 
-	int ChineseRemainder(int a1, int a2, int p, int q) {
+	int ChineseRemainder(int a1, int a2, int p, int q)
+	{
 		int res = 0;
 		int M = p * q;
 
@@ -75,8 +81,10 @@ private:
 		return res;
 	}
 
-	int Inverse(int number, int modd) {
-		for (int i = 1; i < modd; i++) {
+	int Inverse(int number, int modd)
+	{
+		for (int i = 1; i < modd; i++)
+		{
 			if ((i * number) % modd == 1)
 				return i;
 		}

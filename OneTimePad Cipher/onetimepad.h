@@ -18,22 +18,26 @@
 #define MAX 51
 using namespace std;
 
-class Onetimepad {
+class Onetimepad
+{
 	char *cipher, *decipher, *newkey;
 
 public:
-	Onetimepad() {
+	Onetimepad()
+	{
 		cipher = new char[MAX];
 		decipher = new char[MAX];
 		newkey = new char[MAX];
 	}
 
-	char* Encrypt(char* plain, char* key) {
+	char *Encrypt(char *plain, char *key)
+	{
 		int i = 0;
 
 		newkey = GenNewKey(key, plain);
 
-		for (i = 0; plain[i] != '\0'; i++) {
+		for (i = 0; plain[i] != '\0'; i++)
+		{
 			if (isupper(plain[i]))
 				cipher[i] = (((plain[i] - 65) + (newkey[i] - 65)) % 26) + 65;
 			else if (islower(plain[i]))
@@ -49,17 +53,17 @@ public:
 		return cipher;
 	}
 
-	char* Decrypt(char* plain, char* key) {
+	char *Decrypt(char *plain, char *key)
+	{
 		int i = 0;
 		newkey = GenNewKey(key, plain);
 
-		for (i = 0; plain[i] != '\0'; i++) {
+		for (i = 0; plain[i] != '\0'; i++)
+		{
 			if (isupper(plain[i]))
-				decipher[i] = (((plain[i] - 65) + 26 - (newkey[i] - 65)) % 26)
-						+ 65;
+				decipher[i] = (((plain[i] - 65) + 26 - (newkey[i] - 65)) % 26) + 65;
 			else if (islower(plain[i]))
-				decipher[i] = (((plain[i] - 97) + 26 - (newkey[i] - 65)) % 26)
-						+ 97;
+				decipher[i] = (((plain[i] - 97) + 26 - (newkey[i] - 65)) % 26) + 97;
 			else
 				decipher[i] = plain[i];
 		}
@@ -71,9 +75,11 @@ public:
 		return decipher;
 	}
 
-	char* GenNewKey(char* key, char* plain) {
+	char *GenNewKey(char *key, char *plain)
+	{
 		int i = 0, j = 0;
-		for (i = 0; plain[i] != '\0'; i++, j++) {
+		for (i = 0; plain[i] != '\0'; i++, j++)
+		{
 			if (key[j] == '\0')
 				j = 0;
 			newkey[i] = toupper(key[j]);
@@ -82,10 +88,10 @@ public:
 		return newkey;
 	}
 
-	char* Getkey() {
+	char *Getkey()
+	{
 		return newkey;
 	}
-
 };
 
 #endif /* ONETIMEPAD_H_ */

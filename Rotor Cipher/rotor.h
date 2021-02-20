@@ -16,28 +16,36 @@
 #define MAX 51
 using namespace std;
 
-class Rotor {
+class Rotor
+{
 	char *cipher, *decipher;
 	int count;
+
 public:
-	Rotor() {
+	Rotor()
+	{
 		cipher = new char[MAX];
 		decipher = new char[MAX];
 		count = 0;
 	}
 
-	char* Encrypt(char* plain, char* key, int n) {
+	char *Encrypt(char *plain, char *key, int n)
+	{
 		int i = 0;
 
 		for (i = 0; i < n; i++)
 			RightShift(key);
 
 		cout << "\n Key : " << key;
-		for (i = 0; plain[i] != '\0'; i++) {
-			if (isupper(plain[i])) {
+		for (i = 0; plain[i] != '\0'; i++)
+		{
+			if (isupper(plain[i]))
+			{
 				cipher[i] = key[plain[i] - 65];
 				RightShift(key);
-			} else if (islower(plain[i])) {
+			}
+			else if (islower(plain[i]))
+			{
 				cipher[i] = key[plain[i] - 97] - 65 + 97;
 				RightShift(key);
 			}
@@ -53,26 +61,32 @@ public:
 		return cipher;
 	}
 
-	char* Decrypt(char* plain, char* key, int n) {
+	char *Decrypt(char *plain, char *key, int n)
+	{
 		int i = 0, pos = 0;
 
 		for (i = 0; i < n; i++)
 			RightShift(key);
 
 		cout << "\n Key : " << key;
-		for (i = 0; plain[i] != '\0'; i++) {
+		for (i = 0; plain[i] != '\0'; i++)
+		{
 
 			for (int j = 0; j < 26; j++)
 				if (toupper(plain[i]) == key[j])
 					pos = j;
 
-			if (isupper(plain[i])) {
+			if (isupper(plain[i]))
+			{
 				decipher[i] = char(pos) + 65;
 				RightShift(key);
-			} else if (islower(plain[i])) {
+			}
+			else if (islower(plain[i]))
+			{
 				decipher[i] = char(pos) + 97;
 				RightShift(key);
-			} else
+			}
+			else
 				decipher[i] = plain[i];
 		}
 		cout << "\n Key : " << key;
@@ -84,12 +98,14 @@ public:
 		return decipher;
 	}
 
-	int getPosition() {
+	int getPosition()
+	{
 		return count;
 	}
 
 private:
-	void RightShift(char* key) {
+	void RightShift(char *key)
+	{
 		int temp = key[25];
 		for (int i = 25; i > 0; i--)
 			key[i] = key[i - 1];
@@ -97,7 +113,8 @@ private:
 		count++;
 	}
 
-	void Leftshift(char* key) {
+	void Leftshift(char *key)
+	{
 		int temp = key[0];
 		for (int i = 0; i < 26; i++)
 			key[i] = key[i + 1];

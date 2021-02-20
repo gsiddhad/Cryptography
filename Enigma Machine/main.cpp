@@ -8,7 +8,8 @@
 #include "enigma.h"
 using namespace std;
 
-int main() {
+int main()
+{
 
 	setvbuf(stdout, NULL, _IONBF, 0);
 	setvbuf(stderr, NULL, _IONBF, 0);
@@ -17,8 +18,8 @@ int main() {
 	char *plain, *cipher, *decipher;
 	plain = new char[MAX];
 
-	char key[3][27] = { "NOATRBECFUXDQGYLKHVIJMPZSW",
-			"BDFHJLCPRTXVZNYEIWGAKMUSQO", "EKMFLGDQVZNTOWYHXUSPAIBRCJ" };
+	char key[3][27] = {"NOATRBECFUXDQGYLKHVIJMPZSW",
+					   "BDFHJLCPRTXVZNYEIWGAKMUSQO", "EKMFLGDQVZNTOWYHXUSPAIBRCJ"};
 
 	char oriKey[3][27];
 	strcpy(oriKey[0], key[0]);
@@ -29,7 +30,8 @@ int main() {
 	gets(plain);
 
 	cout << " Enter Initial Positions of Enigma : ";
-	for (int i = 0; i < 3; i++) {
+	for (int i = 0; i < 3; i++)
+	{
 		cin >> n[i];
 		orin[i] = n[i];
 	}

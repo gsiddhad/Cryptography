@@ -16,26 +16,30 @@
 #define MAX 51
 using namespace std;
 
-class Transposition {
+class Transposition
+{
 	char *cipher, *decipher;
 
 public:
-	Transposition() {
+	Transposition()
+	{
 		cipher = new char[MAX];
 		decipher = new char[MAX];
 	}
 
-	char* Encrypt(char* plain, char* key) {
+	char *Encrypt(char *plain, char *key)
+	{
 
 		unsigned int length = strlen(plain) / strlen(key) + 1;
 
-		char **mat = new char*[length];
+		char **mat = new char *[length];
 		for (unsigned int i = 0; i < length; i++)
 			mat[i] = new char[strlen(key)];
 
 		unsigned int count = 0;
 		for (unsigned int i = 0; i < length; i++)
-			for (unsigned int j = 0; j < strlen(key); j++) {
+			for (unsigned int j = 0; j < strlen(key); j++)
+			{
 				if (count < strlen(plain))
 					mat[i][j] = plain[count];
 				else
@@ -51,15 +55,18 @@ public:
 			cout << "--";
 		cout << endl;
 
-		for (unsigned int i = 0; i < length; i++) {
-			for (unsigned int j = 0; j < strlen(key); j++) {
+		for (unsigned int i = 0; i < length; i++)
+		{
+			for (unsigned int j = 0; j < strlen(key); j++)
+			{
 				cout << " " << mat[i][j];
 			}
 			cout << endl;
 		}
 
 		int *num = new int[strlen(key)];
-		for (unsigned int i = 0; i < strlen(key); i++) {
+		for (unsigned int i = 0; i < strlen(key); i++)
+		{
 			if (isupper(key[i]))
 				num[i] = key[i] - 65;
 			else if (islower(key[i]))
@@ -67,13 +74,15 @@ public:
 		}
 
 		count = 0;
-		for (unsigned int i = 0; i < strlen(key); i++) {
+		for (unsigned int i = 0; i < strlen(key); i++)
+		{
 			int min = 0;
 			for (unsigned int j = 1; j < strlen(key); j++)
 				if (num[j] < num[min])
 					min = j;
 
-			for (unsigned int k = 0; k < length; k++) {
+			for (unsigned int k = 0; k < length; k++)
+			{
 				cipher[count] = mat[k][min];
 				count++;
 			}
@@ -87,18 +96,20 @@ public:
 		return cipher;
 	}
 
-	char* Decrypt(char* plain, char *key) {
-		float len = (float) strlen(plain) / strlen(key);
+	char *Decrypt(char *plain, char *key)
+	{
+		float len = (float)strlen(plain) / strlen(key);
 		unsigned int length = len;
 		if (len > length)
 			length++;
 
-		char **mat = new char*[length];
+		char **mat = new char *[length];
 		for (unsigned int i = 0; i < length; i++)
 			mat[i] = new char[strlen(key)];
 
 		int *num = new int[strlen(key)];
-		for (unsigned int i = 0; i < strlen(key); i++) {
+		for (unsigned int i = 0; i < strlen(key); i++)
+		{
 			if (isupper(key[i]))
 				num[i] = key[i] - 65;
 			else if (islower(key[i]))
@@ -106,13 +117,15 @@ public:
 		}
 
 		unsigned int count = 0;
-		for (unsigned int i = 0; i < strlen(key); i++) {
+		for (unsigned int i = 0; i < strlen(key); i++)
+		{
 			int min = 0;
 			for (unsigned int j = 1; j < strlen(key); j++)
 				if (num[j] < num[min])
 					min = j;
 
-			for (unsigned int k = 0; k < length; k++) {
+			for (unsigned int k = 0; k < length; k++)
+			{
 				mat[k][min] = plain[count];
 				count++;
 			}
@@ -121,10 +134,12 @@ public:
 
 		count = 0;
 		for (unsigned int i = 0; i < length; i++)
-			for (unsigned int j = 0; j < strlen(key); j++) {
+			for (unsigned int j = 0; j < strlen(key); j++)
+			{
 				if (count < strlen(plain))
 					decipher[count] = mat[i][j];
-				else if (count > strlen(plain)) {
+				else if (count > strlen(plain))
+				{
 					decipher[count] = '\0';
 					break;
 				}
@@ -138,9 +153,12 @@ public:
 		return decipher;
 	}
 
-	void printMatrix(char **mat, int n, int m) {
-		for (int i = 0; i < n; i++) {
-			for (int j = 0; j < m; j++) {
+	void printMatrix(char **mat, int n, int m)
+	{
+		for (int i = 0; i < n; i++)
+		{
+			for (int j = 0; j < m; j++)
+			{
 				cout << " " << mat[n][m];
 			}
 			cout << endl;

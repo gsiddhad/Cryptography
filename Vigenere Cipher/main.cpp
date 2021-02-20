@@ -7,24 +7,24 @@
 #include "vigenere.h"
 using namespace std;
 
-int main() {
+int main()
+{
 
 	setvbuf(stdout, NULL, _IONBF, 0);
 	setvbuf(stderr, NULL, _IONBF, 0);
 
 	char *plain, *key, *cipher, *decipher, *newkey;
-    plain = new char[MAX];
+	plain = new char[MAX];
 	key = new char[MAX];
 	newkey = new char[MAX];
 
-    cout << " Enter Plain Text (Max " << MAX - 1 << "): ";
-    gets(plain);
-    cout << " Enter Key Text (Max " << MAX - 1 << "): ";
-    gets(key);
+	cout << " Enter Plain Text (Max " << MAX - 1 << "): ";
+	gets(plain);
+	cout << " Enter Key Text (Max " << MAX - 1 << "): ";
+	gets(key);
 
-
-    Vigenere vigenere;
-    cipher = vigenere.Encrypt(plain, key);
+	Vigenere vigenere;
+	cipher = vigenere.Encrypt(plain, key);
 	decipher = vigenere.Decrypt(cipher, key);
 	newkey = vigenere.Getkey();
 
@@ -32,5 +32,5 @@ int main() {
 	cout << "\n New Key :       " << newkey;
 	cout << "\n Cipher Text :   " << cipher;
 	cout << "\n Decipher Text : " << decipher;
-    return 0;
+	return 0;
 }

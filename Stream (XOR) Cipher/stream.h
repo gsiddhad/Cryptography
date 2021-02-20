@@ -16,18 +16,23 @@
 #define MAX 51
 using namespace std;
 
-class Stream {
+class Stream
+{
 	char *cipher, *decipher;
+
 public:
-	Stream() {
+	Stream()
+	{
 		cipher = new char[MAX];
 		decipher = new char[MAX];
 	}
 
-	char* Encrypt(char *plain, char *key) {
+	char *Encrypt(char *plain, char *key)
+	{
 		unsigned int position = 0;
 		unsigned int i = 0;
-		for (i = 0; i < strlen(plain); i++) {
+		for (i = 0; i < strlen(plain); i++)
+		{
 			cipher[i] = (plain[i] ^ key[position]);
 			position++;
 			if (position == strlen(key))
@@ -40,10 +45,12 @@ public:
 		return cipher;
 	}
 
-	char* Decrypt(char *plain, char *key) {
+	char *Decrypt(char *plain, char *key)
+	{
 		unsigned int position = 0;
 		unsigned int i = 0;
-		for (i = 0; i < strlen(plain); i++) {
+		for (i = 0; i < strlen(plain); i++)
+		{
 			decipher[i] = (plain[i] ^ key[position]);
 			position++;
 			if (position == strlen(key))

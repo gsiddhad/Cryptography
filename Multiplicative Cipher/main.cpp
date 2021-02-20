@@ -9,7 +9,8 @@
 
 using namespace std;
 
-int main() {
+int main()
+{
 
 	setvbuf(stdout, NULL, _IONBF, 0);
 	setvbuf(stderr, NULL, _IONBF, 0);

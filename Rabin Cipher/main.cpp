@@ -10,7 +10,8 @@ using namespace std;
 
 bool isprime(int);
 
-int main() {
+int main()
+{
 
 	setvbuf(stdout, NULL, _IONBF, 0);
 	setvbuf(stderr, NULL, _IONBF, 0);
@@ -27,7 +28,8 @@ int main() {
 	cout << " Enter Number to Encrypt ( 0 to " << p * q << " ) : ";
 	cin >> plain;
 
-	if (isprime(p) && isprime(q)) {
+	if (isprime(p) && isprime(q))
+	{
 		cout << " Public Key is : " << p * q << endl;
 		Rabin rabin;
 		cipher = rabin.Encrypt(plain, p * q);
@@ -39,13 +41,16 @@ int main() {
 		cout << "\n Decipher Text : ";
 		for (int i = 0; i < 4; i++)
 			cout << " " << decipher[i];
-	} else {
+	}
+	else
+	{
 		cout << p << " or " << q << " is/both not Prime";
 	}
 	return 0;
 }
 
-bool isprime(int number) {
+bool isprime(int number)
+{
 	bool flag = true;
 	for (int i = 2; i <= number / 2; i++)
 		if (number % i == 0)

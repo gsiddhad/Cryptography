@@ -11,7 +11,8 @@ using namespace std;
 
 void printBinary(char);
 
-int main() {
+int main()
+{
 	setvbuf(stdout, NULL, _IONBF, 0);
 	setvbuf(stderr, NULL, _IONBF, 0);
 
@@ -34,33 +35,38 @@ int main() {
 	cout << "\n Decipher Text : " << decipher << endl;
 
 	cout << endl;
-	for (unsigned int i = 0; i < strlen(plain); i++) {
+	for (unsigned int i = 0; i < strlen(plain); i++)
+	{
 		cout << " ";
-//		printBinary(plain[i]);
+		//		printBinary(plain[i]);
 		cout << std::bitset<8>(plain[i]);
 	}
 	cout << endl;
 	unsigned int position = 0;
-	for (unsigned int i = 0; i < strlen(plain); i++) {
+	for (unsigned int i = 0; i < strlen(plain); i++)
+	{
 		cout << " ";
-//		printBinary(key[position]);
+		//		printBinary(key[position]);
 		cout << std::bitset<8>(key[position]);
 		position++;
 		if (position == strlen(key))
 			position = 0;
 	}
 	cout << endl;
-	for (unsigned int i = 0; i < strlen(plain); i++) {
+	for (unsigned int i = 0; i < strlen(plain); i++)
+	{
 		cout << " ";
-//		printBinary(cipher[i]);
+		//		printBinary(cipher[i]);
 		cout << std::bitset<8>(cipher[i]);
 	}
 
 	return 0;
 }
 
-void printBinary(char c) {
-	for (int i = 7; i >= 0; --i) {
+void printBinary(char c)
+{
+	for (int i = 7; i >= 0; --i)
+	{
 		std::cout << ((c & (1 << i)) ? '1' : '0');
 	}
 }

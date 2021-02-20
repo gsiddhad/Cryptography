@@ -16,19 +16,23 @@
 #define MAX 51
 using namespace std;
 
-class Monoalpha {
+class Monoalpha
+{
 	char *cipher, *decipher;
 
 public:
-	Monoalpha() {
+	Monoalpha()
+	{
 		cipher = new char[MAX];
 		decipher = new char[MAX];
 	}
 
-	char* Encrypt(char* plain, char* key) {
+	char *Encrypt(char *plain, char *key)
+	{
 		int i = 0;
 
-		for (i = 0; plain[i] != '\0'; i++) {
+		for (i = 0; plain[i] != '\0'; i++)
+		{
 			if (isupper(plain[i]))
 				cipher[i] = key[plain[i] - 65];
 			else if (islower(plain[i]))
@@ -44,9 +48,11 @@ public:
 		return cipher;
 	}
 
-	char* Decrypt(char* plain, char* key) {
+	char *Decrypt(char *plain, char *key)
+	{
 		int i = 0, pos = 0;
-		for (i = 0; plain[i] != '\0'; i++) {
+		for (i = 0; plain[i] != '\0'; i++)
+		{
 
 			for (int j = 0; j < 26; j++)
 				if (toupper(plain[i]) == key[j])

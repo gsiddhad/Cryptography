@@ -16,18 +16,22 @@
 #define MAX 51
 using namespace std;
 
-class Additive {
+class Additive
+{
 	char *cipher, *decipher;
 
 public:
-	Additive() {
+	Additive()
+	{
 		cipher = new char[MAX];
 		decipher = new char[MAX];
 	}
 
-	char* Encrypt(char* plain, int key) {
+	char *Encrypt(char *plain, int key)
+	{
 		int i = 0;
-		for (i = 0; plain[i] != '\0'; i++) {
+		for (i = 0; plain[i] != '\0'; i++)
+		{
 			if (isupper(plain[i]))
 				cipher[i] = (((plain[i] - 65) + key) % 26) + 65;
 			else if (islower(plain[i]))
@@ -43,10 +47,12 @@ public:
 		return cipher;
 	}
 
-	char* Decrypt(char* plain, int key) {
+	char *Decrypt(char *plain, int key)
+	{
 		key = 26 - key;
 		int i = 0;
-		for (i = 0; plain[i] != '\0'; i++) {
+		for (i = 0; plain[i] != '\0'; i++)
+		{
 			if (isupper(plain[i]))
 				decipher[i] = (((plain[i] - 65) + key) % 26) + 65;
 			else if (islower(plain[i]))

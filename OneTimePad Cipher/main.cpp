@@ -8,12 +8,13 @@
 #include "onetimepad.h"
 using namespace std;
 
-int main() {
+int main()
+{
 
 	setvbuf(stdout, NULL, _IONBF, 0);
 	setvbuf(stderr, NULL, _IONBF, 0);
 
-	srand((unsigned) time(0));
+	srand((unsigned)time(0));
 
 	char *plain, *key, *cipher, *decipher, *newkey;
 	plain = new char[MAX];
@@ -28,7 +29,8 @@ int main() {
 	unsigned int i = 0;
 	bool flag = false;
 
-	for (i = 0; i < strlen(plain); i++) {
+	for (i = 0; i < strlen(plain); i++)
+	{
 		flag = rand() % 2;
 		if (flag)
 			key[i] = rand() % 26 + 65;
@@ -50,5 +52,3 @@ int main() {
 	cout << "\n Decipher Text : " << decipher;
 	return 0;
 }
-
-

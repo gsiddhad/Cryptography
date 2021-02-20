@@ -8,7 +8,8 @@
 #include "play.h"
 using namespace std;
 
-int main() {
+int main()
+{
 	setvbuf(stdout, NULL, _IONBF, 0);
 	setvbuf(stderr, NULL, _IONBF, 0);
 
@@ -26,16 +27,20 @@ int main() {
 
 	bool flag = true;
 	int length = strlen(key);
-	for (int i = 0; i < 26; i++) {
+	for (int i = 0; i < 26; i++)
+	{
 		char ch = i + 97;
-		for (int j = 0; j < length; j++) {
-			if (key[j] == ch || ch == 'j') {
+		for (int j = 0; j < length; j++)
+		{
+			if (key[j] == ch || ch == 'j')
+			{
 				flag = true;
 				break;
 			}
 			flag = false;
 		}
-		if (!flag) {
+		if (!flag)
+		{
 			key[length] = ch;
 			length++;
 			key[length] = '\0';
@@ -48,8 +53,10 @@ int main() {
 		for (int j = 0; j < 5; j++)
 			keymat[i][j] = key[count++];
 
-	for (int i = 0; i < 5; i++) {
-		for (int j = 0; j < 5; j++) {
+	for (int i = 0; i < 5; i++)
+	{
+		for (int j = 0; j < 5; j++)
+		{
 			cout << " " << keymat[i][j];
 		}
 		cout << endl;

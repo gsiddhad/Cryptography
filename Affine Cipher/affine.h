@@ -17,18 +17,22 @@ using namespace std;
 
 #define MAX 51
 
-class Affine {
+class Affine
+{
 	char *cipher, *decipher;
 
 public:
-	Affine() {
+	Affine()
+	{
 		cipher = new char[MAX];
 		decipher = new char[MAX];
 	}
 
-	char* Encrypt(char* plain, int a, int b) {
+	char *Encrypt(char *plain, int a, int b)
+	{
 		int i = 0;
-		for (i = 0; plain[i] != '\0'; i++) {
+		for (i = 0; plain[i] != '\0'; i++)
+		{
 			if (isupper(plain[i]))
 				cipher[i] = ((((plain[i] - 65) * a) + b) % 26) + 65;
 			else if (islower(plain[i]))
@@ -44,12 +48,14 @@ public:
 		return cipher;
 	}
 
-	char* Decrypt(char* plain, int a, int b) {
+	char *Decrypt(char *plain, int a, int b)
+	{
 		int i = 0;
 
 		int inv = Inverse(a);
 
-		for (i = 0; plain[i] != '\0'; i++) {
+		for (i = 0; plain[i] != '\0'; i++)
+		{
 			if (isupper(plain[i]))
 				decipher[i] = ((inv * ((plain[i] - 65) + 104 - b)) % 26) + 65;
 			else if (islower(plain[i]))
@@ -66,14 +72,15 @@ public:
 	}
 
 private:
-	int Inverse(int number) {
-		for (int i = 1; i < 26; i++) {
+	int Inverse(int number)
+	{
+		for (int i = 1; i < 26; i++)
+		{
 			if ((i * number) % 26 == 1)
 				return i;
 		}
 		return 1;
 	}
-
 };
 
 #endif /* AFFINE_H_ */

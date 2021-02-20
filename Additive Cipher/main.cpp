@@ -10,7 +10,8 @@
 
 using namespace std;
 
-int main() {
+int main()
+{
 
 	setvbuf(stdout, NULL, _IONBF, 0);
 	setvbuf(stderr, NULL, _IONBF, 0);
@@ -24,7 +25,8 @@ int main() {
 	cout << " Enter Shift Number : ";
 	cin >> key;
 
-	while (key < 0) {
+	while (key < 0)
+	{
 		key += 26;
 	}
 
